@@ -5,9 +5,11 @@
 
 /**
  *  ##################
- *  引入代理实现单例模式
+ *  单例模式
  *  #################
  */
+
+/** 引入代理实现 **/
 
 var CreateDiv = function (html) {
   this.html = html;
@@ -61,13 +63,7 @@ console.log('e===f?', e, f, e === f);
 console.log(typeof ProxySingletonCreateDiv);
 console.log(typeof ProxySingletonCreate);
 
-
-
-/**
- * ################
- * #  通用单例模式  #
- * ################
- */
+  /**通用单例模式**/
 
  // 通用的单例验证方法
  const getSingle = function (fn){
@@ -79,7 +75,7 @@ console.log(typeof ProxySingletonCreate);
  // 创建登录模态框
  const createLoginLayer = function (){
  	const div = document.createElement('div');
- 	div.innerHTML = '我是创建的登录模态框';
+ 	div.innerHTML = '我是通用单例创建的登录模态框';
  	document.body.appendChild(div);
  	return div;
  };
@@ -87,9 +83,29 @@ console.log(typeof ProxySingletonCreate);
  const createSingleLoginLoyer = getSingle(createLoginLayer);
  const loginLayer1 = createSingleLoginLoyer(); // 第一个登录模态框
  const loginLayer2 = createSingleLoginLoyer(); // 还是第一个登录模态框
+
  console.log(loginLayer1 === loginLayer2); // true
 
 
  /**
-  * 
+  * ###################
+  * #     惰性单例     #
+  * ###################
   */
+
+ const creareLoginLayer2 = (function () {
+   let div;
+   return function () {
+     if (!div) {
+       div = document.createElement('div');
+       div.innerHTML = '我是惰性单例创建的登录模态框'
+     }
+     return div;
+   }
+ })();
+
+ // 在点击按钮时才创建节点（惰性）
+ document.getElementById('login-btn').onclick = function () {
+   var loginLayer = createLoginLayer();
+   loginLayer.style.display = 'block';
+ };
