@@ -75,7 +75,7 @@ console.log(typeof ProxySingletonCreate);
  // 创建登录模态框
  const createLoginLayer = function (){
  	const div = document.createElement('div');
- 	div.innerHTML = '我是通用单例创建的登录模态框';
+ 	div.innerHTML = '我是 通用单例 创建的登录模态框';
  	document.body.appendChild(div);
  	return div;
  };
@@ -94,18 +94,20 @@ console.log(typeof ProxySingletonCreate);
   */
 
  const creareLoginLayer2 = (function () {
-   let div;
+   let div2;
    return function () {
-     if (!div) {
-       div = document.createElement('div');
-       div.innerHTML = '我是惰性单例创建的登录模态框'
+     if (!div2) {
+       div2 = document.createElement('div');
+       div2.innerHTML = '我是 惰性单例 创建的登录模态框';
+       document.body.appendChild(div2);
      }
-     return div;
+     return div2;
    }
  })();
 
+
  // 在点击按钮时才创建节点（惰性）
  document.getElementById('login-btn').onclick = function () {
-   var loginLayer = createLoginLayer();
+   var loginLayer = creareLoginLayer2();
    loginLayer.style.display = 'block';
  };

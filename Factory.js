@@ -82,9 +82,9 @@ const RoleFactory2 = {
   }
 }
 
-var Warrior2 = RoleFactory2.createRole('战士');
-var Mage2 = RoleFactory2.createRole('法师');
-var Archer2 = RoleFactory2.createRole('射手');
+// var Warrior2 = RoleFactory2.createRole('战士');
+// var Mage2 = RoleFactory2.createRole('法师');
+// var Archer2 = RoleFactory2.createRole('射手');
 
 /**
  * 工厂函数3，使用函数动态实例化创建角色
