@@ -36,9 +36,9 @@ var ProxySingletonCreateDiv = (function(){
  * 箭头函数内this指向 window
  * 函数自执行内this指向 window
  */
+ var instance;
 var ProxySingletonCreate = (html) => {
   return (function() {
-    var instance;
     if (!instance) {
       instance = new CreateDiv(html);
     }

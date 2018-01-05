@@ -18,7 +18,7 @@ var strategys = {
     },
     // 手机号码格式
     mobileFormat: function(value,errorMsg) {
-        if(!/(^1[3|5|8][0-9]{9}$)/.test(value)) {
+        if(!/^1[3|5|8][0-9]{9}$/.test(value)) {
             return errorMsg;
         }
     }
@@ -53,12 +53,15 @@ var validateFunc = function(){
     /* 添加一些效验规则 */
     validator.add(registerForm.userName,'isNotEmpty','用户名不能为空');
     validator.add(registerForm.password,'minLength:6','密码长度不能小于6位');
-    validator.add(registerForm.userName,'mobileFormat','手机号码格式不正确');
+    // validator.add(registerForm.userName,'mobileFormat','手机号码格式不正确');
 
     var errorMsg = validator.start(); // 获得效验结果
     return errorMsg; // 返回效验结果
 };
 var registerForm = document.getElementById("registerForm");
+
+
+
 registerForm.onsubmit = function(){
     var errorMsg = validateFunc();
     if(errorMsg){
