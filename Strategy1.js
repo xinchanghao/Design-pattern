@@ -1,3 +1,9 @@
+/**
+ * 设计模式概述之策略模式 -- 表单验证
+ */
+
+
+//先封装策略对象
 var strategys = {
     isNotEmpty: function(value,errorMsg) {
         if(value === '') {
@@ -17,6 +23,8 @@ var strategys = {
         }
     }
 };
+
+//实现Validator类，Validator类在这里作为Context，负责接收用户的请求并委托给strategy 对象
 var Validator = function(){
     this.cache = [];  // 保存效验规则
 };
@@ -30,6 +38,7 @@ Validator.prototype.add = function(dom,rule,errorMsg) {
         return strategys[strategy].apply(dom,str);
     });
 };
+//validator对象里添加完一系列的效验规则之后，会调用validator.start()方法来启动效验
 Validator.prototype.start = function(){
     for(var i = 0, validatorFunc; validatorFunc = this.cache[i++]; ) {
         var msg = validatorFunc(); // 开始效验 并取得效验后的返回信息

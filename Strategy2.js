@@ -62,6 +62,8 @@ var validateFunc = function(){
     var errorMsg = validator.start(); // 获得效验结果
     return errorMsg; // 返回效验结果
 };
+
+
 // 点击确定提交
 registerForm.onsubmit = function(){
     var errorMsg = validateFunc();

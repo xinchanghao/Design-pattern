@@ -30,7 +30,7 @@ const proxyImage = (function() {
 	};
 })();
 // 使用代理对象
-proxyImage.setSrc('./reality.png');
+proxyImage.setSrc('./real.png');
 
 //
 // 说明：图片懒加载的方式：先通过一张loading图占位，然后通过异步的方式加载图片，等图片加载好了再把完成的图片加载到img标签里面。

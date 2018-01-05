@@ -20,6 +20,8 @@ const plus = function() {
 };
 
 // 创建缓存代理
+// 说明：这里每次进行同类的计算时（乘法和加法两类），先判断缓存对象cache中是否存在该参数连接成的字符串作为key的属性。
+// 如果有，则直接从cache中读取，否则就进行计算并保存其结果
 const createProxyFactory = function(fn) {
 	let cache = {}; // 保存计算的结果
 	// 使用闭包在内存中保留对cache的引用
@@ -38,7 +40,3 @@ const proxyMult = createProxyFactory(mult);
 const proxyPlus = createProxyFactory(plus);
 console.log(proxyMult(1,2,3,4)); // 24
 console.log(proxyPlus(1,2,3,4)); // 10
-
-//
-// 说明：这里每次进行同类的计算时（乘法和加法两类），先判断缓存对象cache中是否存在该参数连接成的字符串作为key的属性。
-// 如果有，则直接从cache中读取，否则就进行计算并保存其结果
